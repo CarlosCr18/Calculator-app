@@ -73,7 +73,7 @@
 }
 
 .calcGrid::after {
-  content: "Use keyboard or press the buttons to use \00000athe calculator \00000a\00000a Key C = Clear \00000a Key Entor = Equals \00000a Key C = Clear\00000a Key Backspace = Back";
+  content: "Use keyboard or press the buttons to use \00000athe calculator \00000a\00000a Key C = Clear \00000a Key Entor = Equals \00000a Key Backspace = Back";
   position: absolute;
   white-space: pre;
   bottom: -50%;
