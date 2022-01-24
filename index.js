@@ -102,27 +102,18 @@ class Presentational extends React.Component {
     this.updateTextString = this.updateTextString.bind(this);
   }
 
+  //Function that gets a string and depending on its value it updates the display and result status
+  //Funcion que recibe una string y dependiendo del valor actualiza el display y result status
   updateTextString(newD) {
+    //check operators sequence
+    //Revisar secuencia de oepradores
     if (
       !(
         /[\*|\/|\+]/.test(newD) &&
         /[\*|\/|\+|\-]$/.test(this.state.display.join(""))
       )
     ) {
-      /*
-        if(newD==="-"){
-          
-          if(/[\-]$/.test(this.state.display.join(''))){
-            this.setState({
-            display:[...this.state.display.slice(0,-1),newD]
-            });
-          }else{
-            this.setState({
-            display:[...this.state.display,newD]
-            });
-          }
-          
-        }else */ if (newD === "Clear") {
+      if (newD === "Clear") {
         this.setState({
           result: 0,
           display: ["0"],
@@ -140,6 +131,7 @@ class Presentational extends React.Component {
           });
         }
       } else if (newD === "=") {
+        //If last character is an operator
         if (/[\/|\*|\+]$/.test(this.state.display.join())) {
           this.setState({
             display: [...this.state.display].slice(0, -1),
@@ -168,7 +160,7 @@ class Presentational extends React.Component {
         if (
           /\./.test([this.state.display].join("").split(/\+|\-|\*|\//)[count])
         ) {
-          console.log("last item already has decimal point");
+          //alert("last item already has decimal point");
         } else {
           if (this.state.display[0] != "0") {
             this.setState({
@@ -192,6 +184,7 @@ class Presentational extends React.Component {
         }
       }
     } else {
+      //Allowing negative numbers
       if (this.state.display[this.state.display.length - 1] == "-") {
         this.setState({
           display: [...this.state.display.slice(0, -2), newD],
@@ -245,6 +238,8 @@ class CalcButton extends React.Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.updateText = this.updateText.bind(this);
   }
+
+  //Register key events
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeyPress);
   }
@@ -257,6 +252,7 @@ class CalcButton extends React.Component {
     }
   }
 
+  //function to update text and animate keys background when pressed
   updateText() {
     this.props.updateTextString(this.props.keyTrigger);
 
